@@ -4,9 +4,11 @@ import './assets/index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import RootStore from './store/RootStore';
-import {Provider} from 'mobx-react';
+import { Provider } from 'mobx-react';
 
 const rootStore = new RootStore();
+
+rootStore.marketerStore.fetchMarketers();
 
 ReactDOM.render(
     <Provider store={rootStore}>
