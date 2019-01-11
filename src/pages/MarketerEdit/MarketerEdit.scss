@@ -43,7 +43,7 @@
     & > label:nth-child(6) {
       grid-column: 2;
       padding: 0;
-      &>h3{
+      & > h3 {
         text-align: center;
         max-width: 80%;
         padding: 10px;
@@ -73,11 +73,11 @@
       grid-row: 4;
       max-height: fit-content;
       font-size: 1.3rem;
-      transition: all .3s;
+      transition: all 0.3s;
     }
-    & > .reset-btn:hover{
+    & > .reset-btn:hover {
       cursor: pointer;
-      background-color: rgba(136, 30, 30, 0.925);      
+      background-color: rgba(136, 30, 30, 0.925);
     }
     & > .submit-btn {
       grid-row: 6;
@@ -93,6 +93,93 @@
     & > .submit-btn:hover {
       background-color: #357e67;
       transform: scale(0.99);
+    }
+  }
+
+  & > .custom-alert {
+    position: fixed;
+    color: #7c2f20;
+    border: 1px solid #7c2f20;
+    font-size: 2rem;
+    margin: 0;
+    top: 60px;
+    left: -100vw;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    width: 30%;
+    display: grid;
+    grid-gap: 10px;
+    justify-content: center;
+    & > h3 {
+      text-align: center;
+      margin: 0;
+    }
+    &>svg{
+      width: 100%;
+    }
+  }
+
+  & > .custom-alert.shown {
+    left: 35vw;
+  }
+
+  .after-edit-container {
+    animation: dash 0.9s ease-in-out;
+    svg {
+      max-width: 200px;
+      display: block;
+      margin: 40px auto 0;
+    }
+
+    .path {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 0;
+      &.circle {
+        -webkit-animation: dash 0.9s ease-in-out;
+        animation: dash 0.9s ease-in-out;
+      }
+      &.line {
+        stroke-dashoffset: 1000;
+        -webkit-animation: dash 0.9s 0.35s ease-in-out forwards;
+        animation: dash 0.9s 0.35s ease-in-out forwards;
+      }
+      &.check {
+        stroke-dashoffset: -100;
+        -webkit-animation: dash-check 0.9s 0.35s ease-in-out forwards;
+        animation: dash-check 0.9s 0.35s ease-in-out forwards;
+      }
+    }
+
+    & > h3 {
+      text-align: center;
+      margin: 20px 0 60px;
+      font-size: 1.45em;
+      &.success {
+        color: #4ba98c;
+      }
+      &.error {
+        color: #d06079;
+      }
+    }
+
+    @-webkit-keyframes dash {
+      0% {
+        stroke-dashoffset: 1000;
+      }
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @-webkit-keyframes dash-check {
+      0% {
+        stroke-dashoffset: -100;
+      }
+      100% {
+        stroke-dashoffset: 900;
+      }
     }
   }
 }

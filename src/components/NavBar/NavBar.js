@@ -14,7 +14,7 @@ export default props => {
                     <NavLink activeClassName="active-link" to="/marketer/register">
                         <li>Register</li>
                     </NavLink>
-                    <NavLink activeClassName="active-link" to="/admin">
+                    <NavLink activeClassName="active-link" to="/login">
                         <li>Admin</li>
                     </NavLink>
                 </ul>

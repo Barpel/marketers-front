@@ -19,14 +19,13 @@ export default class MarketerStore {
     }
 
     @action
-    async fetchMarketers() {
-        this.marketers = await MarketerService.getMarketers();
-        console.log(this.marketers)
+    async fetchMarketers(sortParam) {
+        this.marketers = await MarketerService.getMarketers(sortParam);
     }
 
     @action
     async fetchMarketerByEmail(email) {
-        this.marketer = await MarketerService.getMarketerByEmail(email);
+        return this.marketer = await MarketerService.getMarketerByEmail(email);
     }
 
     @action
@@ -35,7 +34,9 @@ export default class MarketerStore {
     }
 
     async saveMarketer(marketerData) {
-        return this.marketer = await MarketerService.saveMarketer(marketerData);
+        this.marketer = await MarketerService.saveMarketer(marketerData);
+        this.fetchMarketers();
+        return this.marketer;
     }
 
     async deleteMarketer(marketerId) {
